@@ -18,7 +18,8 @@ def main(argv=None):
     elif args.sample == "expire":
         board = Board(daily_limit=5, ttl_ms=1000)
         board.accept("p1", "b1", 0, "r1")
-        print("returned=%d open=%d" % (0, len(board.open_bounties(1001))))
+        open_list = board.open_bounties(1001)
+        print("returned=%d open=%d" % (board.returned, len(open_list)))
     elif args.sample == "dup":
         board = Board(daily_limit=5, ttl_ms=100000)
         board.accept("p1", "b1", 0, "same")
